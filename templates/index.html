@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>House Price Prediction</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            background: rgb(116 255 146);
+            height: 100vh;
+        }
+        .register_page {
+            width: 360px;
+            margin: auto;
+        }
+        .register_page h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #ffffff;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .form input {
+            font-family: 'Times New Roman', Times, serif;
+            outline: none;
+            background: #f2f2f2;
+            width: 100%;
+            border: 1px solid #ccc;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .submit {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: cornflowerblue;
+            cursor: pointer;
+            background: #fff;
+            border: 1px solid cornflowerblue;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .submit:hover {
+            background: cornflowerblue;
+            color: #fff;
+        }
+        .result {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: darkgreen;
+        }
+        .error {
+            font-size: 14px;
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register_page">
+        <div class="form">
+            <h1>House Price Prediction</h1>
+            <form action="{{url_for('predict')}}" method="POST">
+                Bedrooms <input type="number" name="bedrooms" placeholder="Enter the no of Bedrooms" required><br>
+                Bathrooms <input type="number" name="bathrooms" placeholder="Enter the no of Bathrooms" required><br>
+                Floors <input type="number" name="floors" placeholder="Enter the no of Floors" required><br>
+                Constructed Year <input type="number" name="yr_built" placeholder="Enter year of Build" required><br>
+                <input type="submit" value="Predict" class="submit">
+            </form>
+            {% if data %}
+                <p class="result">House Price is: {{data}}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
