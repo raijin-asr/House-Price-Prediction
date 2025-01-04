@@ -27,6 +27,7 @@
             margin: 0 auto 100px;
             padding: 45px;
             border-radius: 10px;
+            margin-top:20px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
         .form input {
@@ -44,15 +45,15 @@
             font-size: 15px;
             text-transform: uppercase;
             font-weight: 600;
-            color: cornflowerblue;
+            color: rgb(0, 0, 0);
             cursor: pointer;
             background: #fff;
-            border: 1px solid cornflowerblue;
+            border: 1px solid rgb(226, 61, 61);
             padding: 10px;
             border-radius: 5px;
         }
         .submit:hover {
-            background: cornflowerblue;
+            background: rgb(226, 39, 11);
             color: #fff;
         }
         .result {
@@ -60,11 +61,6 @@
             font-weight: bold;
             margin-top: 15px;
             color: darkgreen;
-        }
-        .error {
-            font-size: 14px;
-            color: red;
-            margin-top: 15px;
         }
     </style>
 </head>
@@ -75,16 +71,16 @@
         <div class="form">
             <h1>House Price Prediction</h1>
             <form action="{{url_for('predict')}}" method="POST">
-                Bedrooms <input type="number" name="bedrooms" placeholder="Enter the no of Bedrooms" required><br>
-                Bathrooms <input type="number" name="bathrooms" placeholder="Enter the no of Bathrooms" required><br>
-                Floors <input type="number" name="floors" placeholder="Enter the no of Floors" required><br>
-                Constructed Year <input type="number" name="yr_built" placeholder="Enter year of Build" required><br>
+                Bedrooms <input type="number" name="bedrooms" placeholder="Enter the no of Bedrooms" required pattern="[0-9]{2}" min="1" max="20"><br>
+                Bathrooms <input type="number" name="bathrooms" placeholder="Enter the no of Bathrooms" required pattern="[0-9]{2}" min="1" max="20"><br>
+                Floors <input type="number" name="floors" placeholder="Enter the no of Floors" required pattern="[0-9]{2}" min="1" max="20"><br>
+                Constructed Year <input type="number" name="yr_built" placeholder="Enter year of Construction" required  pattern="[0-9]{4}" min="1000" max="2025"><br>
                 <input type="submit" value="Predict" class="submit">
             </form>
             {% if data %}
                 <p class="result">House Price is: {{data}}</p>
             {% endif %}
-        </div>
+        </div>  
     </div>
 </body>
 </html>
